@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-xl-6 col-xl-offset-3 col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3
+                    col-sm-8 col-sm-offset-2 col-xs-12" id="calculator-outline" show-data="">
+        <h2 id="title">Calculator</h2>
+
+        <input type="text" id="display-numbers" ng-model="vm.calculate">
+        <table class="table table-bordered calculator-table">
+            <tbody>
+            <tr>
+                <td colspan="2" class="calculator-button" id="clearButton" ng-click="vm.getData('c')">Clear</td>
+                <td colspan="2" class="calculator-button" id="enterButton" ng-click="vm.getData('e')">Enter</td>
+
+            </tr>
+            <tr>
+
+                <td class="calculator-button" ng-click="vm.getData('1')">1</td>
+                <td class="calculator-button" ng-click="vm.getData('2')">2</td>
+                <td class="calculator-button" ng-click="vm.getData('3')">3</td>
+                <td class="calculator-button" ng-click="vm.getData('*')">*</td>
+            </tr>
+
+            <tr>
+                <td class="calculator-button" ng-click="vm.getData('4')">4</td>
+                <td class="calculator-button" ng-click="vm.getData('5')">5</td>
+                <td class="calculator-button" ng-click="vm.getData('6')">6</td>
+                <td class="calculator-button" ng-click="vm.getData('/')">/</td>
+            </tr>
+
+            <tr>
+                <td class="calculator-button" ng-click="vm.getData('7')">7</td>
+                <td class="calculator-button" ng-click="vm.getData('8')">8</td>
+                <td class="calculator-button" ng-click="vm.getData('9')">9</td>
+                <td class="calculator-button" ng-click="vm.getData('+')">+</td>
+
+            </tr>
+
+            <tr>
+                <td colspan="2" class="calculator-button" ng-click="vm.getData('0')">0</td>
+                <td class="calculator-button" ng-click="vm.getData('.')">.</td>
+                <td class="calculator-button" ng-click="vm.getData('-')">-</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
