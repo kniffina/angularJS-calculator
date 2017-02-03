@@ -5,23 +5,16 @@
         .module("calculator")
         .controller("CalculatorController", CalculatorController);
 
-    CalculatorController.$inject = ["solveFactory", "$scope"];
+    CalculatorController.$inject = ["solveFactory", "$scope", "$timeout"];
 
-    function CalculatorController(solveFactory, $scope) {
+    function CalculatorController(solveFactory, $scope, $timeout) {
         var vm = this;
-        vm.getData = getData;
+        vm.bindData = bindData;
 
         //set calculate to empty string
-        vm.calculate = "";
+        clearData();
 
-        function getData(value) {
-
-            //send the value entered to the bindData
-            bindData(value);
-        }
-
-        //bindData takes the value passed in from getData click event, and binds it to the
-        //  input of the calculator. This is used to create a string that can be evaluated
+        //bind data takes in the value from the click event and figures out what to do next
         function bindData(value) {
             var whatToDo = determineNext(value);
 
@@ -31,7 +24,8 @@
 
             //user hit "enter" so call the CalculatorService to do the math with the entire string and put it into display
             else if(whatToDo === 1)
-                vm.calculate = solveFactory.getAnswer(vm.calculate);
+               calculateProblem();
+
 
             //user entered clear, so set string to ''
             else if (whatToDo === 2)
@@ -67,6 +61,22 @@
                 return true
             else
                 return false
+        }
+
+        function calculateProblem() {
+            //store answer from solveFactory service
+            var showAnswer = solveFactory.getAnswer(vm.calculate);
+
+            if(showAnswer === undefined || isNaN(showAnswer)) {
+
+                //use timeout to display error message if syntax is incorrect
+                vm.calculate = "Error with your syntax. Please review, and re-enter data."
+                $timeout(function() {
+                    clearData();
+                }, 3500);
+            }
+            else
+                vm.calculate = showAnswer;
         }
 
 

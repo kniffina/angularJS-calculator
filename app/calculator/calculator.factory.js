@@ -46,7 +46,7 @@
 
             for (var i = 0; i < problem.length; i++) {
                 //if inside of the problem we find an operator add it to the operators array
-                if (problem[i] === "+" || problem[i] === "/" || problem[i] === "*" || problem[i] === "-") {
+                if (isOperator(problem[i]) === true) {
 
                     //we want to account for negative numbers so additional functionality is needed
                     var isNegative = checkNegatives(i, tempString); //if checks value before it by using temp string, if value before it is operator, adds -to number

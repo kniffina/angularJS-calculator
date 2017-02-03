@@ -7,37 +7,37 @@
         <table class="table table-bordered calculator-table">
             <tbody>
             <tr>
-                <td colspan="2" class="calculator-button" id="clearButton" ng-click="vm.getData('c')">Clear</td>
-                <td colspan="2" class="calculator-button" id="enterButton" ng-click="vm.getData('e')">Enter</td>
+                <td colspan="2" class="calculator-button" id="clearButton" ng-click="vm.bindData('c')">Clear</td>
+                <td colspan="2" class="calculator-button" id="enterButton" ng-click="vm.bindData('e')">Enter</td>
 
             </tr>
             <tr>
 
-                <td class="calculator-button" ng-click="vm.getData('1')">1</td>
-                <td class="calculator-button" ng-click="vm.getData('2')">2</td>
-                <td class="calculator-button" ng-click="vm.getData('3')">3</td>
-                <td class="calculator-button" ng-click="vm.getData('*')">*</td>
+                <td class="calculator-button" ng-click="vm.bindData('1')">1</td>
+                <td class="calculator-button" ng-click="vm.bindData('2')">2</td>
+                <td class="calculator-button" ng-click="vm.bindData('3')">3</td>
+                <td class="calculator-button" ng-click="vm.bindData('*')">*</td>
             </tr>
 
             <tr>
-                <td class="calculator-button" ng-click="vm.getData('4')">4</td>
-                <td class="calculator-button" ng-click="vm.getData('5')">5</td>
-                <td class="calculator-button" ng-click="vm.getData('6')">6</td>
-                <td class="calculator-button" ng-click="vm.getData('/')">/</td>
+                <td class="calculator-button" ng-click="vm.bindData('4')">4</td>
+                <td class="calculator-button" ng-click="vm.bindData('5')">5</td>
+                <td class="calculator-button" ng-click="vm.bindData('6')">6</td>
+                <td class="calculator-button" ng-click="vm.bindData('/')">/</td>
             </tr>
 
             <tr>
-                <td class="calculator-button" ng-click="vm.getData('7')">7</td>
-                <td class="calculator-button" ng-click="vm.getData('8')">8</td>
-                <td class="calculator-button" ng-click="vm.getData('9')">9</td>
-                <td class="calculator-button" ng-click="vm.getData('+')">+</td>
+                <td class="calculator-button" ng-click="vm.bindData('7')">7</td>
+                <td class="calculator-button" ng-click="vm.bindData('8')">8</td>
+                <td class="calculator-button" ng-click="vm.bindData('9')">9</td>
+                <td class="calculator-button" ng-click="vm.bindData('+')">+</td>
 
             </tr>
 
             <tr>
-                <td colspan="2" class="calculator-button" ng-click="vm.getData('0')">0</td>
-                <td class="calculator-button" ng-click="vm.getData('.')">.</td>
-                <td class="calculator-button" ng-click="vm.getData('-')">-</td>
+                <td colspan="2" class="calculator-button" ng-click="vm.bindData('0')">0</td>
+                <td class="calculator-button" ng-click="vm.bindData('.')">.</td>
+                <td class="calculator-button" ng-click="vm.bindData('-')">-</td>
             </tr>
             </tbody>
         </table>
