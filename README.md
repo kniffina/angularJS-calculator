@@ -1,7 +1,9 @@
 # angularJS-calculator
 Simple implementation of a calculator
 
+
 link to application: https://kniffina.github.io/angularJS-calculator/
+
 
 To Add List:
 
