@@ -5,9 +5,9 @@
         .module("calculator")
         .controller("CalculatorController", CalculatorController);
 
-    CalculatorController.$inject = ["solveFactory", "$scope", "$timeout"];
+    CalculatorController.$inject = ["solveFactory", "$timeout"];
 
-    function CalculatorController(solveFactory, $scope, $timeout) {
+    function CalculatorController(solveFactory, $timeout) {
         var vm = this;
         vm.bindData = bindData;
 
@@ -25,7 +25,6 @@
             //user hit "enter" so call the CalculatorService to do the math with the entire string and put it into display
             else if(whatToDo === 1)
                calculateProblem();
-
 
             //user entered clear, so set string to ''
             else if (whatToDo === 2)
@@ -57,28 +56,26 @@
 
         //create isOperator to possible use at a later date and save space
         function isOperator(value) {
-            if(value === "*" || value === "/" || value ==="+" || value === "-")
-                return true
+            if (value === "*" || value === "/" || value === "+" || value === "-")
+                return true;
             else
-                return false
+                return false;
         }
 
         function calculateProblem() {
             //store answer from solveFactory service
             var showAnswer = solveFactory.getAnswer(vm.calculate);
 
-            if(showAnswer === undefined || isNaN(showAnswer)) {
+            if (showAnswer === undefined || isNaN(showAnswer)) {
 
                 //use timeout to display error message if syntax is incorrect
                 vm.calculate = "Error with your syntax. Please review, and re-enter data."
                 $timeout(function() {
-                    clearData();
-                }, 3500);
-            }
-            else
+                        clearData();
+                    },
+                    3500);
+            } else
                 vm.calculate = showAnswer;
         }
-
-
     }
 }());
