@@ -68,7 +68,7 @@
         function calculateProblem() {
             //store answer from solveFactory service
             var showAnswer = solveFactory.getAnswer(vm.solveFactory.calculate);
-            console.log(showAnswer);
+
             //if it is not a string or number then produce error
             if (showAnswer === "NaN" || showAnswer === undefined) {
 

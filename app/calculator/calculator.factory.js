@@ -37,10 +37,27 @@
 
         //receives an element and determines if it should be pushed onto the array. Used to determine
         //   if it is just a number that the user has entered
-        function _checkProblem(data) {  
+        function _checkProblem(data) {
+            var periodCount = 0; //if gets to be more than 1, then error with syntax
+
             //loop through string
             for (var i = 0; i < data.length; i++) {
-               
+                
+                /* This works for initial release but needs to be in implementation of numbers array
+                    so that it can check each number individually to see if it is valid periods*/
+                if (data[i] === ".") {
+                    periodCount++;
+                    console.log("period");
+                    continue;
+                }
+
+                if (periodCount > 1)
+                    return -1;
+ 
+                //if there is an operator, that is part of the equation, so continue
+                if (_isOperator(data[i]) === true)
+                    continue;
+
                 var check = parseInt(data[i]);
                 
                 //if it is not a number, then that means it is an equation and we can push it onto an array
@@ -65,14 +82,16 @@
                 }
             }
             var returnValue = _breakDown(tempString, tempString2);
-            
+
+            var checkProblem = _checkProblem(problem);
+            console.log(checkProblem);
             //check to see that the it is not just numbers entered into input
-            if (_checkProblem(problem) === true) {
+            if (checkProblem === true) {
                 console.log("CalculatorController Problem: " + problem + "\n");
                 console.log("CalculatorController Answer: " + returnValue + "\n");
 
                 //if the value is not valid, we dont want to question and answer into their respective arrays
-                if (returnValue === "NaN") 
+                if (returnValue === "NaN" || returnValue === undefined) 
                     return returnValue; //controller will take care of it
                  
                 //valid problem because there is an answer, so push them onto arrays and return the value
@@ -84,6 +103,12 @@
                     return returnValue;
                 }
             }
+            //this is the too many periods case. Return "NaN" so an error is produced
+            else if (checkProblem === -1) {
+                returnValue = "NaN";
+                return returnValue;
+            }
+            
             //it is just numbers and return them to be put into calculate
             else 
                 return problem;
@@ -120,6 +145,7 @@
             }
             //end for-loop, if there is a number we need to push it onto the numbers array
             numbers.push(number);
+
 
             //we have these two arrays with input entered in correct, now we need to solve the problem
             var answer = _solveProblem(numbers, operators);

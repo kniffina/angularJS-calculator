@@ -44,14 +44,8 @@
             console.log(vm.answerHistory);
             console.log(vm.questionHistory);
 
-            console.log("historyModal sendData. Data is: " + data + "\n");
-
-            //if it is not a number or string then set calculate to empty string
-            if (data === "NaN" || isNaN(data) || data === undefined)
-                vm.solveFactory.calculate = ""; //give it an empty string
-        
-            else
-                vm.solveFactory.calculate = data; //give the value to calculate that was passed in
+            //set the data that was clicked to the input portion. This can be done because we have already validated the arrays
+            vm.solveFactory.calculate = data; //give the value to calculate that was passed in
 
             $uibModalInstance.close("data passed in");
             

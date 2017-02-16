@@ -28,5 +28,6 @@ C:\Users\adamj\onedrive\documents\visual studio 2015\Projects\calculator\calcula
 C:\Users\adamj\onedrive\documents\visual studio 2015\Projects\calculator\calculator\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\adamj\onedrive\documents\visual studio 2015\Projects\calculator\calculator\bin\Microsoft.ApplicationInsights.xml
 C:\Users\adamj\onedrive\documents\visual studio 2015\Projects\calculator\calculator\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\adamj\onedrive\documents\visual studio 2015\Projects\calculator\calculator\obj\Debug\calculator.csprojResolveAssemblyReference.cache
 C:\Users\adamj\onedrive\documents\visual studio 2015\Projects\calculator\calculator\obj\Debug\calculator.dll
 C:\Users\adamj\onedrive\documents\visual studio 2015\Projects\calculator\calculator\obj\Debug\calculator.pdb
