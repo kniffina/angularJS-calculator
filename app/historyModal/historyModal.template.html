@@ -1,0 +1,26 @@
+﻿<div class="modal-content">   
+    <div class="modal-header">
+        <h3 id="modal-title"class="modal-title">Question and Answer History</h3>
+        <h5 id="clickToInput">Click on an Answer or Question to put into the Calculator Input</h5>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-4">
+                    <h3 class="dataHeader">Problem</h3>
+                    <p class="historyData" ng-repeat="q in vm.questionHistory track by $index" 
+                                           ng-click="vm.sendDataInput(q)">{{ q }}</p>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+                    <h3 class="dataHeader">Answer</h3>
+                    <p class="historyData" ng-repeat="a in vm.answerHistory track by $index" 
+                                           ng-click="vm.sendDataInput(a)"><b>{{ a }}</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="vm.clearHistory()">Clear History</button>
+        <button class="btn btn-success" ng-click="$dismiss()">Close Modal</button>
+    </div>
+</div>

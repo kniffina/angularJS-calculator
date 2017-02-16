@@ -2,7 +2,7 @@
     "use strict";
 
     angular
-        .module("calculator", ["ui.router"])
+        .module("calculator", ["ui.router", "ui.bootstrap"])
         .config(configure);
 
     configure.$inject = ["$stateProvider", "$urlRouterProvider"];

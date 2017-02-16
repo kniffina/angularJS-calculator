@@ -5,11 +5,14 @@
         .module("calculator")
         .controller("CalculatorController", CalculatorController);
 
-    CalculatorController.$inject = ["solveFactory", "$timeout"];
+    CalculatorController.$inject = ["solveFactory", "historyModal", "$timeout", "$window", "$uibModal"];
 
-    function CalculatorController(solveFactory, $timeout) {
+    function CalculatorController(solveFactory, historyModal, $timeout, $window, $uibModal) {
         var vm = this;
+        vm.solveFactory = solveFactory;
         vm.bindData = bindData;
+        vm.getHistory = getHistory;
+      
 
         //set calculate to empty string
         clearData();
@@ -20,7 +23,7 @@
 
             //designed to create space for user experience
             if (whatToDo === 0)
-                vm.calculate = vm.calculate + " " + value + " ";
+                vm.solveFactory.calculate = vm.solveFactory.calculate + " " + value + " ";
 
             //user hit "enter" so call the CalculatorService to do the math with the entire string and put it into display
             else if(whatToDo === 1)
@@ -32,7 +35,7 @@
 
             //user entered a number and can simply be attached to the end of the string
             else
-                vm.calculate = vm.calculate + value;
+                vm.solveFactory.calculate = vm.solveFactory.calculate + value;
 
         }
 
@@ -51,7 +54,7 @@
 
         //simply resets the input so the user can start fresh
         function clearData() {
-            vm.calculate = "";
+            vm.solveFactory.calculate = "";
         }
 
         //create isOperator to possible use at a later date and save space
@@ -64,18 +67,26 @@
 
         function calculateProblem() {
             //store answer from solveFactory service
-            var showAnswer = solveFactory.getAnswer(vm.calculate);
-
-            if (showAnswer === undefined || isNaN(showAnswer)) {
+            var showAnswer = solveFactory.getAnswer(vm.solveFactory.calculate);
+            console.log(showAnswer);
+            //if it is not a string or number then produce error
+            if (showAnswer === "NaN" || showAnswer === undefined) {
 
                 //use timeout to display error message if syntax is incorrect
-                vm.calculate = "Error with your syntax. Please review, and re-enter data."
+                vm.solveFactory.calculate = "Error with your syntax. Please review, and re-enter data.";
                 $timeout(function() {
                         clearData();
                     },
-                    3500);
-            } else
-                vm.calculate = showAnswer;
+                    2000);
+            } else {
+                vm.solveFactory.calculate = showAnswer;
+            }
         }
+
+        //getHistory calles the historyModal service and allows the factory to take care of the rest
+        function getHistory() {
+            historyModal.showHistory();
+        }
+    
     }
 }());

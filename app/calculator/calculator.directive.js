@@ -2,13 +2,13 @@
 
 angular
     .module("calculator")
-    .directive('useCalculator', useCalculator);
+    .directive("useCalculator", useCalculator);
 
 function useCalculator() {
     var directive = {
         link: link,
-        templateUrl: 'app/calculator/use-calculator.template.html',
-        restrict: 'EA',
+        templateUrl: "app/calculator/use-calculator.template.html",
+        restrict: "EA"
     };
     return directive;
 

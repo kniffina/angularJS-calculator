@@ -94,7 +94,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\calculator\calculator.factory.spec.js" />
+    <Content Include="app\test\calculator\calculator.factory.spec.js" />
+    <Content Include="app\historyModal\historyModal.controller.js" />
+    <Content Include="app\historyModal\historyModal.factory.js" />
+    <Content Include="app\historyModal\historyModal.template.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -111,7 +114,7 @@
     <Content Include="app.css" />
     <Content Include="app\app.config.js" />
     <Content Include="app\calculator\calculator.controller.js" />
-    <Content Include="app\calculator\calculator.controller.spec.js" />
+    <Content Include="app\test\calculator\calculator.controller.spec.js" />
     <Content Include="app\calculator\calculator.directive.js" />
     <Content Include="app\calculator\calculator.factory.js" />
     <Content Include="app\calculator\calculator.template.html" />
@@ -126,10 +129,14 @@
     <Content Include="references\angular-mocks.js" />
     <Content Include="references\angular-ui-router.js" />
     <Content Include="references\angular.js" />
+    <Content Include="references\ui-bootstrap-tpls-2.5.0.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\test\modalHistory\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

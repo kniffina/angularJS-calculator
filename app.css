@@ -12,7 +12,6 @@
     width: 100%;
     font-family: 'Barrio', cursive;
     font-size: 50px;
-
 }
 
 #display-numbers {
@@ -67,3 +66,49 @@
 #enterButton:hover {
     background-color: #85E21A;
 }
+
+#historyButton {
+    margin-left: -14.5px;
+    float: left;
+    width: 105%;
+    height: 60px;
+    font-size: 18px;
+    opacity: .9;
+}
+
+#historyButton:hover {
+    opacity: 1;
+    font-size: 20px;
+}
+
+.modal-title {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.historyData {
+    font-size: 17px;
+    text-align: center;
+}
+
+.historyData:hover {
+    cursor: pointer;
+    font-size: 19px;
+    color: black;
+    
+}
+
+
+.dataHeader {
+    text-decoration: underline;
+    text-align: center;
+}
+
+#putIntoInput {
+    text-align: center;
+}
+
+#clickToInput {
+    text-align: center;
+}
+

@@ -6,8 +6,18 @@
         .factory("solveFactory", solveFactory);
 
     function solveFactory() {
+        var questionHistory = [];
+        var answerHistory = [];
+
+        var calculate = "";
+
+
         return {
+            calculate: calculate,
+            clearHistory: clearHistory,
             getAnswer: getAnswer,
+            questionHistory: questionHistory,//array
+            answerHistory: answerHistory,   //array
             _breakDown: _breakDown,
             _solveProblem: _solveProblem,
             _calculating: _calculating,
@@ -15,16 +25,35 @@
             _multiplicationOrDivision: _multiplicationOrDivision,
             _alterArrays: _alterArrays,
             _isOperator: _isOperator,
-            _checkNegatives: _checkNegatives
+            _checkNegatives: _checkNegatives,
+            _checkProblem: _checkProblem
         };
+
+        //make the arrays empty when called
+        function clearHistory() {
+            questionHistory.length = 0;
+            answerHistory.length = 0;
+        }
+
+        //receives an element and determines if it should be pushed onto the array. Used to determine
+        //   if it is just a number that the user has entered
+        function _checkProblem(data) {  
+            //loop through string
+            for (var i = 0; i < data.length; i++) {
+               
+                var check = parseInt(data[i]);
+                
+                //if it is not a number, then that means it is an equation and we can push it onto an array
+                if (typeof (check) != "number" || isNaN(check) === true)       
+                    return true;                  
+            }
+            //if true has not been returned, return false
+            return false;
+        }
 
         function getAnswer(problem) {
             var tempString = "";
             var tempString2 = "";
-
-            //set two empty arrays which will be used to hold the history of the problems
-            var questionHistory = new Array();
-            var answerHistory = new Array();
 
             for(var i = 0; i < problem.length; i++) {
                 if(problem[i] === " ") {
@@ -36,17 +65,32 @@
                 }
             }
             var returnValue = _breakDown(tempString, tempString2);
+            
+            //check to see that the it is not just numbers entered into input
+            if (_checkProblem(problem) === true) {
+                console.log("CalculatorController Problem: " + problem + "\n");
+                console.log("CalculatorController Answer: " + returnValue + "\n");
 
-            //not used currently and will need to return data to controller to be saved each time called
-            questionHistory.push(problem);
-            answerHistory.push(returnValue); //push
+                //if the value is not valid, we dont want to question and answer into their respective arrays
+                if (returnValue === "NaN") 
+                    return returnValue; //controller will take care of it
+                 
+                //valid problem because there is an answer, so push them onto arrays and return the value
+                else {
+                    //not used currently and will need to return data to controller to be saved each time called
+                    questionHistory.push(problem);
+                    answerHistory.push(returnValue); //push
 
-            console.log("Question History: " + questionHistory);
-            console.log("Answer History: " + answerHistory);
+                    return returnValue;
+                }
+            }
+            //it is just numbers and return them to be put into calculate
+            else 
+                return problem;
+            
+        } //end getAnswer
 
-            return returnValue;
-        }
-
+     
         function _breakDown(tempString, problem) {
             var numbers = new Array();
             var operators = new Array();
@@ -76,10 +120,6 @@
             }
             //end for-loop, if there is a number we need to push it onto the numbers array
             numbers.push(number);
-
-            console.log(numbers);
-            console.log(operators);
-
 
             //we have these two arrays with input entered in correct, now we need to solve the problem
             var answer = _solveProblem(numbers, operators);
@@ -138,21 +178,19 @@
         }
 
         function _solveEquation(number1, number2, operator) {
-            console.log("Number1 before parse: " + number1);
-            console.log("Number2 before parse: " + number2);
             //convert to floating point integer (wont be needed for all numbers)
             number1 = parseFloat(number1);
             number2 = parseFloat(number2);
 
 
            if(operator === "+")
-               return number1 + number2;
+               return (number1 + number2).toFixed(2);
            else if(operator === "/")
-               return number1 / number2;
+               return (number1 / number2).toFixed(2);
            else if(operator === "*")
-               return number1 * number2;
+               return (number1 * number2).toFixed(2);
            else
-               return number1 - number2;
+               return (number1 - number2).toFixed(2);
 
         }
 
@@ -178,19 +216,17 @@
         }
 
         function _checkNegatives(index, tempString) {
-            if(tempString[index] === "-") {
+            if (tempString[index] === "-") {
 
                 //if the value before our index is an operator or undefined, then the number should be negative
                 if (_isOperator(tempString[index - 1]) === true || tempString[index - 1] === undefined) {
-                    return true;
-                }
-                else
-                    return false;
-           }
-           else
-               return false;
-        }
 
+                    return true;
+                } else
+                    return false;
+            } else
+                return false;
+        }
     }
 
 })();

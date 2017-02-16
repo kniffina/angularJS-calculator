@@ -3,7 +3,7 @@
                     col-sm-8 col-sm-offset-2 col-xs-12" id="calculator-outline" show-data="">
         <h2 id="title">Calculator</h2>
 
-        <input type="text" id="display-numbers" ng-model="vm.calculate">
+        <input type="text" id="display-numbers" ng-model="vm.solveFactory.calculate">
         <table class="table table-bordered calculator-table">
             <tbody>
             <tr>
@@ -42,4 +42,11 @@
             </tbody>
         </table>
     </div>
+</div>
+<div class="row">  
+    <div class="col-xl-6 col-xl-offset-3 col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3
+                    col-sm-8 col-sm-offset-2 col-xs-12">
+        <button class="btn btn-large btn-warning" id="historyButton" ng-click="vm.getHistory()">See Your Problem & Answer History</button>
+    </div>
+
 </div>
